@@ -14,18 +14,30 @@ FORMAT: 1A
 
 ## Upload File [/upload/{file}]
 
-
-### Upload File POST [POST]
-
-
-+ Response 200 (application/json)
++ Model (application/json)
 
     + Headers
 
-            Etag: etagtest
+      Access-Control-Allow-Headers: Authorization,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Length,ETag,Content-MD5
+      Access-Control-Allow-Methods: PUT,GET,POST,DELETE,HEAD,OPTIONS,CONNECT,TRACE
+      Access-Control-Allow-Origin: *
+      Access-Control-Expose-Headers: ETag
+      ETag: AQAAADl1GTvRN6B2wWyLspGGyHOSAEdj
 
     + Body
 
             {
                 "Key": "Items/11933/11933A_1000x1000.jpg"
             }
+
+### Upload File POST [POST]
+
++ Response 200 (application/json)
+
+    [Upload File][]
+
+### Upload File PUT [PUT]
+
++ Response 200 (application/json)
+
+    [Upload File][]
