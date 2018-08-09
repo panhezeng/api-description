@@ -198,7 +198,7 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
     1. 一个加号+跟着 Model (Header Content-Type) 定义Model对象，对象名就是往上查找到的第一个Resource名，这里是My Message
     2. 在Request, Response关键字下面跟着 [Model名][] 使用此Model
 
-    ```markdown
+    ```apib
     ## My Message [/message]
     
     + Model (application/json)
