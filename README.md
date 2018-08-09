@@ -115,7 +115,7 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
 
     2. 查询参数
 
-        1. 路径名跟着花括号括起来的问号?参数名
+        1. 路径名跟着花括号括起来的问号?参数名，多个参数用逗号分隔，不能有空格
         2. Parameters关键字下面，一个加号+跟着 参数名 (类型, 是否必须) - 描述，再下面跟着 一个加号 Default关键字冒号: 默认值
  
         ```markdown
@@ -156,7 +156,7 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
         
     ## All My Messages [/messages{?limit}]
     
-    + Attributes (array[My Message])
+    + Attributes (array[My Message, My Message])
     
     ### Retrieve all Messages [GET]
     
@@ -278,6 +278,7 @@ Parameters关键字可以出现在Resource或者Action下面
 
 Attributes对象定义在Request, Response关键字下面，会自动作为其Body值
 
+通过命名方式复用Attributes和Model对象，Attributes和Model对象必须定义在命名Resource下，Named Endpoints下定义的Attributes和Model对象，无法复用
 
 空一行的要求较随意
 
