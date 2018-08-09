@@ -28,13 +28,13 @@ FORMAT: 1A
                 "Key": "Items/11933/11933A_1000x1000.jpg"
             }
 
-### POST [POST]
+### POST
 
 + Response 200
 
     [File][]
 
-### PUT [PUT]
+### PUT
 
 + Response 200
 
@@ -48,15 +48,17 @@ FORMAT: 1A
 + Parameters
     + limit: 0 (number, optional) 
     + offset: 0 (number, optional)
-    + search: "" (string, optional)
-    
-+ Attributes (ElSelectRemoteMultiple Option)    
+    + search: "" (string, optional)  
         
 + Response 200 (application/json)
-        + Attributes (array[Options])
+    + Attributes (ElSelectRemoteMultiple Options)
                
 # Data Structures
-    
+
 ## ElSelectRemoteMultiple Option (object)
-    + id: 250FF (string)
-    + name: 1415203908 (string, required) 
++ id: 250FF (string)
++ name: 1415203908 (string, required) 
+
+## ElSelectRemoteMultiple Options
++ count: 100 (number)
++ data (array[ElSelectRemoteMultiple Option])
