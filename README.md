@@ -6,11 +6,17 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
 
 1. 比如Simplest API
 
-    1. 一个井号跟着 Action关键字 自定义的Resource URI
-    2. 一个加号跟着 Response关键字 状态码
-    3. 这六组字符是必须有的，是一个API描述的最低要求
+    1. FORMAT关键字: 版本号
+    2. 一个井号跟着 API文档名字
+    3. 一个井号跟着 Action关键字 自定义的Resource URI
+    4. 一个加号跟着 Response关键字 状态码
+    5. 以上内容是一个API文档描述的最基本要求
 
     ```markdown
+    FORMAT: 1A
+ 
+    # The Simplest API   
+ 
     # GET /message
     
     + Response 200
@@ -177,19 +183,29 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
     3. 其实一个Attributes对象就可以作为另一个Attributes对象的初始数据，但是Attributes不能想Data Structures一样，脱离资源Resource编写，不能自定义名字等
 
     ```markdown
+    FORMAT: 1A
+    
+    # The Simplest API 
+    
+    # Group Messages
+        
+    ## All My Messages [/messages{?limit}]
+    
+    ### Retrieve all Messages [GET]
+    
+    + Response 200 (application/json)
+        + Attributes (Messages)
+        
     # Data Structures
     
-    ## Message Base (object)
+    ## Message (object)
     + id: 250FF (string, required)
     + created: 1415203908 (number) - Created detail description Time stamp
-        
-    ## My Message [/message/{id}]
+    + type: 1 (number)
     
-    + Parameters
-        + id (number) 
-        
-    + Attributes (Message Base)
-        + type: 1 (number)
+    ## Messages
+    + count: 100 (number)
+    + data (array[Message])
     ```
 
 
