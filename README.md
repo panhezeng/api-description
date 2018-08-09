@@ -136,9 +136,9 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
 
 7. 如果想定义一个对象，可以作为任意Request或Response的Body的值，则渐进增强，出现Attributes关键字
 
-    1. 第一个出现的+ Attributes (object)是定义一个Attributes对象，对象名就是往上查找到第一个Resource名，这里是My Message
+    1. 第一个出现的+ Attributes (object)是定义一个Attributes对象，对象名就是往上查找到的第一个Resource名，这里是My Message
     2. 第二个出现的+ Attributes (My Message)是使用前面定义的Attributes对象作为Retrieve a Message的Response Body
-    3. 第三个出现的+ Attributes (array[My Message])是定义一个基于My Message Attributes对象的Attributes对象，对象名就是往上查找到第一个Resource名，这里是All My Messages
+    3. 第三个出现的+ Attributes (array[My Message])是定义一个基于My Message Attributes对象的Attributes对象，对象名就是往上查找到的第一个Resource名，这里是All My Messages
     4. 第四个出现的+ Attributes (All My Messages)是使用前面定义的Attributes对象作为Retrieve all Messages的Response Body
 
     ```markdown
@@ -205,7 +205,8 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
 
 9. 如果还想定义一个对象，可以作为Request或Response的值，则渐进增强，出现Model关键字
 
-    1. 一个加号+跟着 Model (Header Content-Type)
+    1. 一个加号+跟着 Model (Header Content-Type) 定义Model对象，对象名就是往上查找到的第一个Resource名，这里是My Message
+    2. 在Request, Response关键字下面跟着 [Model名][] 使用此Model
 
     ```markdown
     ## My Message [/message]
