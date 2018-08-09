@@ -4,13 +4,13 @@ FORMAT: 1A
 
 # Group Upload
 
-## Upload Token [GET /upload/token]
+## Token [GET /upload/token]
 
 + Response 200 (application/json)
 
         "token panhezeng panhezeng"
 
-## Upload File [/upload/{file}]
+## File [/upload/{file}]
 
 + Model (application/json)
 
@@ -28,14 +28,39 @@ FORMAT: 1A
                 "Key": "Items/11933/11933A_1000x1000.jpg"
             }
 
-### Upload File POST [POST]
+### POST [POST]
 
 + Response 200
 
     [Upload File][]
 
-### Upload File PUT [PUT]
+### PUT [PUT]
 
 + Response 200
 
     [Upload File][]
+    
+    
+# Group ElSelectRemoteMultiple
+
+## Options [GET /el-select-remote-multiple/options{?limit,offset,search}]
+
++ Parameters
+
+    + limit: 0 (number, optional) 
+    
+    + offset: 0 (number, optional)
+    
+    + search: "" (string, optional)
+    
++ Attributes (ElSelectRemoteMultiple Option)    
+        
++ Response 200 (application/json)
+
+        + Attributes (array[Options])
+               
+# Data Structures
+    
+    ## ElSelectRemoteMultiple Option (object)
+        + id: 250FF (string)
+        + name: 1415203908 (string, required) 

@@ -122,7 +122,7 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
         2. Parameters关键字下面，一个加号+跟着 参数名 (类型, 是否必须) - 描述，再下面跟着 一个加号 Default关键字冒号: 默认值
  
         ```markdown
-        ## All My Messages [/messages{?limit}]
+        ## All My Messages [/messages{?limit,offset}]
         
         ### Retrieve all Messages [GET]
         
@@ -131,6 +131,8 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
             + limit (number, optional) - The maximum number of results to return.
             
                 + Default: `20`
+         
+            + offset: 0 (number)
         ```
 
 
