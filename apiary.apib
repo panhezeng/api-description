@@ -43,21 +43,31 @@ FORMAT: 1A
     
 # Group ElSelectRemoteMultiple
 
-## Options [GET /el-select-remote-multiple/options{?limit,offset,search}]
+## Options List [GET /el-select-remote-multiple/options{?limit,offset,search}]
 
 + Parameters
-    + limit: 0 (number, optional) 
-    + offset: 0 (number, optional)
-    + search: "" (string, optional)  
+    + limit: 20 (number, optional) 
+    + offset (number, optional)
+    + search (string, optional)  
         
 + Response 200 (application/json)
     + Attributes (ElSelectRemoteMultiple Options)
+    
+## Option Create [POST /el-select-remote-multiple/option]
+
++ Request (application/json)
+
+         { "name": "Option name 2"}
+            
++ Response 200 (application/json)
+
+         { "id": "2", "name": "Option name 2"}   
                
 # Data Structures
 
 ## ElSelectRemoteMultiple Option (object)
-+ id: 250FF (string)
-+ name: 1415203908 (string, required) 
++ id: 1
++ name: Option name 1
 
 ## ElSelectRemoteMultiple Options
 + count: 100 (number)
