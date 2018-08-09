@@ -105,15 +105,12 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
         接着上面Markdownd代码
         
         ```markdown
-        
             + id: 1 (number) - An unique identifier of the message.
         ```
         或者
         ```markdown
-        
-            + id (number) 
-             
-             An unique identifier of the message.
+           + id (number) 
+               An unique identifier of the message.
         ```
 
     2. 查询参数
@@ -127,11 +124,8 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
         ### Retrieve all Messages [GET]
         
         + Parameters
-        
             + limit (number, optional) - The maximum number of results to return.
-            
                 + Default: `20`
-         
             + offset: 0 (number)
         ```
 
@@ -147,14 +141,12 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
     ## My Message [/message/{id}]
     
     + Parameters
-    
         + id (number) 
         
     + Attributes (object)
         + id: 250FF (string, required)
         + created: 1415203908 (number) - Created detail description Time stamp
         + type: 1 (number)
-    
              Type detail description 
              
     ### Retrieve a Message [GET]
@@ -169,11 +161,8 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
     ### Retrieve all Messages [GET]
     
     + Parameters
-    
         + limit (number, optional) 
-        
             The maximum number of results to return.
-        
             + Default: `20`
     
     + Response 200 (application/json)
@@ -191,13 +180,12 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
     # Data Structures
     
     ## Message Base (object)
-        + id: 250FF (string, required)
-        + created: 1415203908 (number) - Created detail description Time stamp
+    + id: 250FF (string, required)
+    + created: 1415203908 (number) - Created detail description Time stamp
         
     ## My Message [/message/{id}]
     
     + Parameters
-    
         + id (number) 
         
     + Attributes (Message Base)
@@ -255,9 +243,7 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
     # Messages [/messages{?limit}]
 
     + Parameters
-    
         + limit (number, optional) - The maximum number of results to return.
-        
             + Default: `20`
     
     ## Retrieve all Messages [GET]
@@ -267,7 +253,6 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
     ## Retrieve a Message [GET /message/{id}]
     
     + Parameters
-    
         + id (number)
 
     + Response 200   
@@ -294,11 +279,11 @@ Parameters关键字可以出现在Resource或者Action下面
 Attributes对象定义在Request, Response关键字下面，会自动作为其Body值
 
 
-换行要求
-
-最好都空一行，井号#或+号下面紧跟的对上面定义的描述可以不空行
+空一行的要求较随意
 
 Headers Body关键字和其设置之间必须空一行
+
+其他情况，一般是概念下面的补充说明类文字和对象名和下面的属性之间都无需空一行
 
 缩进要求
 
