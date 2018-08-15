@@ -1,0 +1,234 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "public-example",
+        "version": "",
+        "description": ""
+    },
+    "paths": {
+        "/upload/token": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {},
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "response": {
+                                        "value": "token panhezeng panhezeng"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "summary": "Token",
+                "description": "",
+                "tags": [
+                    "Upload"
+                ]
+            }
+        },
+        "/upload/{file}": {
+            "post": {
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {},
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "response": {
+                                        "value": {
+                                            "Key": "Items/11933/11933A_1000x1000.jpg"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "summary": "",
+                "description": "",
+                "tags": [
+                    "Upload"
+                ]
+            },
+            "put": {
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {},
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "response": {
+                                        "value": {
+                                            "Key": "Items/11933/11933A_1000x1000.jpg"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "summary": "",
+                "description": "",
+                "tags": [
+                    "Upload"
+                ]
+            }
+        },
+        "/el-select-remote-multiple/options": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {},
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "count": {
+                                            "type": "number"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "response": {
+                                        "value": {
+                                            "count": 100,
+                                            "data": [
+                                                {
+                                                    "id": "1",
+                                                    "name": "Option name 1"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "summary": "Options List",
+                "description": "",
+                "tags": [
+                    "ElSelectRemoteMultiple"
+                ],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "example": "20",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/el-select-remote-multiple/option": {
+            "post": {
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {},
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "response": {
+                                        "value": {
+                                            "id": "2",
+                                            "name": "Option name 2"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "summary": "Option Create",
+                "description": "",
+                "tags": [
+                    "ElSelectRemoteMultiple"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "name": "Option name 2"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Token": {},
+            "File": {},
+            "FileModel": {},
+            "Options_List": {},
+            "Option_Create": {},
+            "ElSelectRemoteMultiple_Option": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ElSelectRemoteMultiple_Options": {
+                "type": "object",
+                "properties": {
+                    "count": {
+                        "type": "number"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {}
+                    }
+                }
+            }
+        }
+    }
+}
