@@ -125,13 +125,13 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
  
         ```markdown
         ## Messages Collection [/messages{?limit,offset}]
-        
-        ### Retrieve Messages[GET]
-        
+
         + Parameters
             + limit (number, optional) - The maximum number of results to return.
                 + Default: `20`
             + offset: 0 (number)
+        
+        ### Retrieve Messages[GET]
         ```
 
 
@@ -160,16 +160,16 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
         + Attributes (Message)
         
     ## Messages Collection [/messages{?limit}]
-    
-    + Attributes (array[Message, Message])
-    
-    ### Retrieve Messages[GET]
-    
+ 
     + Parameters
         + limit (number, optional) 
             The maximum number of results to return.
             + Default: `20`
     
+    + Attributes (array[Message, Message])
+    
+    ### Retrieve Messages[GET]
+       
     + Response 200 (application/json)
         + Attributes (Messages Collection)
     ```
