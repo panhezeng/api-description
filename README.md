@@ -51,9 +51,9 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
     1. 井号后跟着 自定义名字，原来的Resource Action顺延跟着，并且用中括号括起来
 
     ```markdown
-    # My Message [/message]
+    # Message [/message]
     
-    ## Retrieve a Message [GET]
+    ## Retrieve Message [GET]
     
     + Response 200
     ```
@@ -68,9 +68,9 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
     ```markdown
     # Group Messages
     
-    ## My Message [/message]
+    ## Message [/message]
     
-    ### Retrieve a Message [GET]
+    ### Retrieve Message [GET]
     
     + Response 200
     ```
@@ -83,7 +83,6 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
 
     ```markdown
     + Response 200 (application/json)
-    
         + Headers
     
                 X-My-Message-Header: 42
@@ -104,7 +103,7 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
             2. 一个加号+跟着 参数名 (类型) 下面跟着 描述
 
         ```markdown
-        ## My Message [/message/{id}]
+        ## Message [/message/{id}]
         
         + Parameters
         ```
@@ -125,9 +124,9 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
         2. Parameters关键字下面，一个加号+跟着 参数名 (类型, 是否必须) - 描述，再下面跟着 一个加号 Default关键字冒号: 默认值
  
         ```markdown
-        ## All My Messages [/messages{?limit,offset}]
+        ## Messages Collection [/messages{?limit,offset}]
         
-        ### Retrieve all Messages [GET]
+        ### Retrieve Messages[GET]
         
         + Parameters
             + limit (number, optional) - The maximum number of results to return.
@@ -138,13 +137,13 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
 
 7. 如果想定义一个对象，可以作为任意Request或Response的Body的值，则渐进增强，出现Attributes关键字
 
-    1. 第一个出现的+ Attributes (object)是定义一个Attributes对象，对象名就是往上查找到的第一个Resource名，这里是My Message
-    2. 第二个出现的+ Attributes (My Message)是使用前面定义的Attributes对象作为Retrieve a Message的Response Body
-    3. 第三个出现的+ Attributes (array[My Message])是定义一个基于My Message Attributes对象的Attributes对象，对象名就是往上查找到的第一个Resource名，这里是All My Messages
-    4. 第四个出现的+ Attributes (All My Messages)是使用前面定义的Attributes对象作为Retrieve all Messages的Response Body
+    1. 第一个出现的+ Attributes (object)是定义一个Attributes对象，对象名就是往上查找到的第一个Resource名，这里是Message
+    2. 第二个出现的+ Attributes (Message)是使用前面定义的Attributes对象作为Retrieve Message的Response Body
+    3. 第三个出现的+ Attributes (array[Message])是定义一个基于Message Attributes对象的Attributes对象，对象名就是往上查找到的第一个Resource名，这里是Messages Collection
+    4. 第四个出现的+ Attributes (Messages Collection)是使用前面定义的Attributes对象作为Retrieve Messages Collection的Response Body
 
     ```markdown
-    ## My Message [/message/{id}]
+    ## Message [/message/{id}]
     
     + Parameters
         + id (number) 
@@ -155,16 +154,16 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
         + type: 1 (number)
              Type detail description 
              
-    ### Retrieve a Message [GET]
+    ### Retrieve Message [GET]
     
     + Response 200 (application/json)
-        + Attributes (My Message)
+        + Attributes (Message)
         
-    ## All My Messages [/messages{?limit}]
+    ## Messages Collection [/messages{?limit}]
     
-    + Attributes (array[My Message, My Message])
+    + Attributes (array[Message, Message])
     
-    ### Retrieve all Messages [GET]
+    ### Retrieve Messages[GET]
     
     + Parameters
         + limit (number, optional) 
@@ -172,7 +171,7 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
             + Default: `20`
     
     + Response 200 (application/json)
-        + Attributes (All My Messages)
+        + Attributes (Messages Collection)
     ```
 
 
@@ -180,7 +179,7 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
 
     1. 一个井号#跟着 Data Structures关键字，下面跟着 两个井号# 跟着对象名 (类型) 
     2. 使用数据结构对象 + Attributes (Message Base)
-    3. 其实一个Attributes对象就可以作为另一个Attributes对象的初始数据，但是Attributes不能想Data Structures一样，脱离资源Resource编写，不能自定义名字等
+    3. 其实一个Attributes对象本身就可以作为另一个Attributes对象的初始数据，但是Attributes必须依附于Resource，使用Resource的命名
 
     ```markdown
     FORMAT: 1A
@@ -189,9 +188,9 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
     
     # Group Messages
         
-    ## All My Messages [/messages{?limit}]
+    ## Messages Collection [/messages{?limit}]
     
-    ### Retrieve all Messages [GET]
+    ### Retrieve Messages[GET]
     
     + Response 200 (application/json)
         + Attributes (Messages)
@@ -211,16 +210,14 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
 
 9. 如果还想定义一个对象，可以作为Request或Response的值，则渐进增强，出现Model关键字
 
-    1. 一个加号+跟着 Model (Header Content-Type) 定义Model对象，对象名就是往上查找到的第一个Resource名，这里是My Message
+    1. 一个加号+跟着 Model (Header Content-Type) 定义Model对象，对象名就是往上查找到的第一个Resource名，这里是Message
     2. 在Request, Response关键字下面跟着 [Model名][] 使用此Model
 
     ```apib
-    ## My Message [/message]
+    ## Message [/message]
     
     + Model (application/json)
-    
         This is the `application/json` message resource representation.
-    
         + Headers
     
                 X-My-Message-Header: 42
@@ -229,11 +226,11 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
     
                 { "message": "Hello World!" }
     
-    ### Retrieve a Message [GET]
+    ### Retrieve Message [GET]
     
     + Response 200
     
-        [My Message][]
+        [Message][]
     ```
 
 
@@ -246,7 +243,7 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
     ```markdown
     # Group Messages
     
-    ## Retrieve a Message [GET /message/{id}]
+    ## Retrieve Message [GET /message/{id}]
     
     + Response 200
     ```           
@@ -262,11 +259,11 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
         + limit (number, optional) - The maximum number of results to return.
             + Default: `20`
     
-    ## Retrieve all Messages [GET]
+    ## Retrieve Messages[GET]
 
     + Response 200
 
-    ## Retrieve a Message [GET /message/{id}]
+    ## Retrieve Message [GET /message/{id}]
     
     + Parameters
         + id (number)
@@ -286,7 +283,7 @@ Parameters, Request, Response, Headers, Body, Attributes, Model关键字，以�
 
 Request, Response关键字后面跟着的小括号内容，是设置Header Content-Type的一种快捷写法，和下面的+ Headers下面设置Content-Type二选一，只能存其一
 
-Request关键字后面必须有小括号括起来的Content-Type或者下面有Headers或Body定义
+Request关键字后面必须有小括号括起来的Content-Type或者下面的Headers或Body的部分有定义
 
 Response关键字后面必须有状态码
 
@@ -294,15 +291,13 @@ Parameters关键字可以出现在Resource或者Action下面
 
 Attributes对象定义在Request, Response关键字下面，会自动作为其Body值
 
-通过命名方式复用Attributes和Model对象，Attributes和Model对象必须定义在命名Resource下，Named Endpoints下定义的Attributes和Model对象，无法复用
+如要复用Attributes和Model对象，Attributes和Model对象必须定义在命名Resource下面，然后通过Attributes (Resource)或[Resource][]的方式复用，Named Endpoints下定义的Attributes和Model对象，无法复用
 
-空一行的要求较随意
+缩进和换行要求
 
-Headers Body关键字和其设置之间必须空一行
+Headers和Body的设置，包括Request, Response，Model关键字下面直接写的，和Header，Body关键字下面写的，相对上面的关键字，必须缩进两个tab和空一行
 
-其他情况，一般是概念下面的补充说明类文字和对象名和下面的属性之间都无需空一行
+井号#不用缩进，井号下面第一层级的加号+也不用缩进，其他层级加号+通常要求缩进一个tab
 
-缩进要求
 
-井号#不用缩进，井号下面第一层级的加号+也不用缩进，其他层级加号+一般都是缩进一个tab，个别情况要求两个tab，比如Headers和Body下面的设置
 

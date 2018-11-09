@@ -53,6 +53,17 @@
                 "description": "",
                 "tags": [
                     "Upload"
+                ],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
                 ]
             },
             "put": {
@@ -77,6 +88,17 @@
                 "description": "",
                 "tags": [
                     "Upload"
+                ],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
                 ]
             }
         },
