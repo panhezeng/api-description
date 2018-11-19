@@ -4,8 +4,7 @@
   "description": "##  api blueprint 学习笔记",
   "main": "apiary.apib",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "apib2swagger": "apib2swagger -i apiary.apib -o swagger.json && swagger2openapi swagger.json -o swagger.json"
+    "apib2swagger": "apib2swagger -i apiary.apib -o swagger2.json && swagger2openapi swagger2.json -o swagger3.json"
   },
   "repository": {
     "type": "git",
@@ -18,7 +17,7 @@
   },
   "homepage": "https://github.com/panhezeng/api-description#readme",
   "devDependencies": {
-    "apib2swagger": "^1.1.1",
-    "swagger2openapi": "^3.2.8"
+    "apib2swagger": "latest",
+    "swagger2openapi": "latest"
   }
 }

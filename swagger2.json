@@ -1,0 +1,238 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "public-example",
+        "version": "",
+        "description": ""
+    },
+    "paths": {
+        "/upload/token": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {},
+                        "examples": {
+                            "application/json": "token panhezeng panhezeng"
+                        }
+                    }
+                },
+                "summary": "Token",
+                "description": "",
+                "tags": [
+                    "Upload"
+                ],
+                "parameters": [],
+                "produces": [
+                    "application/json"
+                ]
+            }
+        },
+        "/upload/{data}": {
+            "post": {
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {},
+                        "examples": {
+                            "application/json": {
+                                "Key": "panhezeng"
+                            }
+                        }
+                    }
+                },
+                "summary": "",
+                "description": "",
+                "tags": [
+                    "Upload"
+                ],
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ]
+            },
+            "put": {
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {},
+                        "examples": {
+                            "application/json": {
+                                "Key": "panhezeng"
+                            }
+                        }
+                    }
+                },
+                "summary": "",
+                "description": "",
+                "tags": [
+                    "Upload"
+                ],
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ]
+            }
+        },
+        "/el-select-remote-multiple/options": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {},
+                        "examples": {
+                            "application/json": {
+                                "count": 100,
+                                "data": [
+                                    {
+                                        "id": "1",
+                                        "name": "Option name 1"
+                                    }
+                                ]
+                            }
+                        },
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "number"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {}
+                                }
+                            }
+                        }
+                    }
+                },
+                "summary": "Options List",
+                "description": "",
+                "tags": [
+                    "ElSelectRemoteMultiple"
+                ],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "x-example": "20",
+                        "type": "number"
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "type": "number"
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ]
+            }
+        },
+        "/el-select-remote-multiple/option": {
+            "post": {
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {},
+                        "examples": {
+                            "application/json": {
+                                "id": "2",
+                                "name": "Option name 2"
+                            }
+                        }
+                    }
+                },
+                "summary": "Option Create",
+                "description": "",
+                "tags": [
+                    "ElSelectRemoteMultiple"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                }
+                            },
+                            "example": {
+                                "name": "Option name 2"
+                            }
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ]
+            }
+        }
+    },
+    "definitions": {
+        "Token": {},
+        "File": {},
+        "FileModel": {},
+        "Options List": {},
+        "Option Create": {},
+        "ElSelectRemoteMultiple Option": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "ElSelectRemoteMultiple Options": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "number"
+                },
+                "data": {
+                    "type": "array",
+                    "items": {}
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Upload"
+        },
+        {
+            "name": "ElSelectRemoteMultiple"
+        }
+    ]
+}

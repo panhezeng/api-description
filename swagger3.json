@@ -30,7 +30,7 @@
                 ]
             }
         },
-        "/upload/{file}": {
+        "/upload/{data}": {
             "post": {
                 "responses": {
                     "200": {
@@ -41,7 +41,7 @@
                                 "examples": {
                                     "response": {
                                         "value": {
-                                            "Key": "Items/11933/11933A_1000x1000.jpg"
+                                            "Key": "panhezeng"
                                         }
                                     }
                                 }
@@ -56,7 +56,7 @@
                 ],
                 "parameters": [
                     {
-                        "name": "file",
+                        "name": "data",
                         "in": "path",
                         "description": "",
                         "required": true,
@@ -76,7 +76,7 @@
                                 "examples": {
                                     "response": {
                                         "value": {
-                                            "Key": "Items/11933/11933A_1000x1000.jpg"
+                                            "Key": "panhezeng"
                                         }
                                     }
                                 }
@@ -91,7 +91,7 @@
                 ],
                 "parameters": [
                     {
-                        "name": "file",
+                        "name": "data",
                         "in": "path",
                         "description": "",
                         "required": true,
@@ -221,6 +221,14 @@
             }
         }
     },
+    "tags": [
+        {
+            "name": "Upload"
+        },
+        {
+            "name": "ElSelectRemoteMultiple"
+        }
+    ],
     "components": {
         "schemas": {
             "Token": {},
