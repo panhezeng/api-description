@@ -1,16 +1,17 @@
 # api-description
 
+[api blueprint examples](https://apiblueprint.org/documentation/examples/)
+
 ##  api blueprint 学习笔记
 
-api blueprint采用渐进增强原则，这点比swagger好，极简写法可以没有任何冗余的样板代码
+api blueprint 采用渐进增强原则，这点比 swagger 好，极简写法可以没有任何冗余的样板代码
 
-1. 比如Simplest API
+1. 比如 Simplest API，以下内容是一个最简化 API 文档描述的全部要求
 
-    1. FORMAT关键字: 版本号
-    2. 一个井号跟着 API文档名字
-    3. 一个井号跟着 Action关键字 自定义的Resource URI
-    4. 一个加号跟着 Response关键字 状态码
-    5. 以上内容是一个API文档描述的最基本要求
+    1. FORMAT 关键字: 版本号
+    2. 一个井号跟着 API 文档名字
+    3. 一个井号跟着 Action 关键字 自定义的 Resource URI
+    4. 一个加号跟着 Response 关键字 状态码
 
     ```markdown
     FORMAT: 1A
@@ -21,15 +22,14 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
     
     + Response 200
     ```
+   
+2. 如果一个 Resource 下面有多个 Action，则渐进增强，出现两个井号
 
-
-2. 如果一个Resource下面有多个Action，则渐进增强，出现两个井号
-
-    1. 一个井号跟着 自定义的Resource URI
-    2. 该Resource下的所有Action都跟在下面
-    3. 两个井号跟着 Action关键字
-    4. 一个加号跟着 Request关键字 (Header Content-Type)
-    5. 一个加号跟着 Response关键字 状态码
+    1. 一个井号跟着 自定义的 Resource URI
+    2. 该 Resource 下的所有 Action 都跟在下面
+    3. 两个井号跟着 Action 关键字
+    4. 一个加号跟着 Request 关键字 (Header Content-Type)
+    5. 一个加号跟着 Response 关键字 状态码
 
     ```markdown
     # /message
@@ -45,10 +45,10 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
     + Response 200
     ```
 
+3. 如果要给 Resource URI Action 命名, 则渐进增强，出现中括号
 
-3. 如果要给Resource Action命名, 则渐进增强，出现中括号
-
-    1. 井号后跟着 自定义名字，原来的Resource Action顺延跟着，并且用中括号括起来
+    1. 井号后跟着 自定义名字，再跟着原来的 Resource URI ，并用中括号括起来
+    2. 井号后跟着 自定义名字，再跟着原来的 Resource Action ，并用中括号括起来
 
     ```markdown
     # Message [/message]
@@ -58,12 +58,9 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
     + Response 200
     ```
 
+4. 如果要给 Resource 分组，则渐进增强，出现 Group 关键字和三个井号
 
-4. 如果要给Resource分组，则渐进增强，出现Group关键字和三个井号
-
-    1. 一个井号跟着 Group关键字 自定义组名
-    2. 该组下的所有Resource都跟在下面
-    3. 注意和命名示例的区别，就是层级增加了，原来的Resource Action都增加了一个井号
+    1. 一个井号跟着 Group关键字 自定义组名，该组下的所有 Resource 都跟在下面，注意和上面3示例的区别，就是层级增加了，原来的 Resource URI Action 都增加了一个井号
 
     ```markdown
     # Group Messages
@@ -75,39 +72,38 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
     + Response 200
     ```
 
+5. 如果需要进一步定制 Response 的 Headers 和 Body，则渐进增强，出现 Headers 和 Body 关键字
 
-5. 如果需要进一步定制Response的Headers和Body，则渐进增强，出现Headers和Body关键字
-
-    1. 一个加号跟着 Response关键字 状态码 (Header Content-Type)
-    2. 一个加号跟着 Headers关键字 下面跟着Headers设置，
+    1. 一个加号跟着 Response 关键字 状态码 (Header Content-Type)
+    2. 紧挨上面不要空行，并且相对上面的缩进一个 tab 后，一个加号跟着 Headers 关键字 下面跟着 Headers 设置
+    3. 空一行，并且相对上面的缩进两个 tab 后，写上 Headers 属性
 
     ```markdown
     + Response 200 (application/json)
         + Headers
     
-                X-My-Message-Header: 42
+                X-My-Message-Header: X
     
         + Body
     
                 { "message": "Hello World!" }
     ```
 
-
-6. 如果需要定制Resource的Parameters参数，则渐进增强，出现Parameters关键字
+6. 如果需要定制 Resource 的 Parameters 参数，则渐进增强，出现 Parameters 关键字
 
     1. 路径参数
 
         1. 斜杆后跟着花括号括起来的参数名
-        2. Parameters关键字下面的多种写法，参数默认都是必填项，并且没有默认值
-            1. 一个加号+跟着 参数名 冒号: 默认值 (类型) - 描述
-            2. 一个加号+跟着 参数名 (类型) 下面跟着 描述
+        2. Parameters 关键字下面的多种写法，路径参数都是必填项，并且没有默认值
+            1. 加号 参数名 冒号 默认值 (类型) - 描述
+            2. 加号 参数名 (类型) 下面跟着 描述
 
         ```markdown
         ## Message [/message/{id}]
         
         + Parameters
         ```
-        接着上面Markdownd代码
+        接着上面 Markdownd 代码
         
         ```markdown
             + id: 1 (number) - An unique identifier of the message.
@@ -117,11 +113,11 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
            + id (number) 
                An unique identifier of the message.
         ```
-
+       
     2. 查询参数
 
         1. 路径名跟着花括号括起来的问号?参数名，多个参数用逗号分隔，不能有空格
-        2. Parameters关键字下面，一个加号+跟着 参数名 (类型, 是否必须) - 描述，再下面跟着 一个加号 Default关键字冒号: 默认值
+        2. Parameters关键字下面，加号 参数名 (类型, 是否必须) - 描述，再下面跟着 加号 Default 关键字 冒号 默认值
  
         ```markdown
         ## Messages Collection [/messages{?limit,offset}]
@@ -133,7 +129,6 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
         
         ### Retrieve Messages[GET]
         ```
-
 
 7. 如果想定义一个对象，可以作为任意Request或Response的Body的值，则渐进增强，出现Attributes关键字
 
@@ -174,11 +169,10 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
         + Attributes (Messages Collection)
     ```
 
-
 8. 如果需要单独在一个地方集中编写可以用于作为Attributes对象初始数据的数据对象，则渐进增强，出现Data Structures关键字
 
     1. 一个井号#跟着 Data Structures关键字，下面跟着 两个井号# 跟着对象名 (类型) 
-    2. 使用数据结构对象 + Attributes (Message Base)
+    2. 使用数据结构对象 + Attributes (Messages)
     3. 其实一个Attributes对象本身就可以作为另一个Attributes对象的初始数据，但是Attributes必须依附于Resource，使用Resource的命名
 
     ```markdown
@@ -207,7 +201,6 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
     + data (array[Message])
     ```
 
-
 9. 如果还想定义一个对象，可以作为Request或Response的值，则渐进增强，出现Model关键字
 
     1. 一个加号+跟着 Model (Header Content-Type) 定义Model对象，对象名就是往上查找到的第一个Resource名，这里是Message
@@ -232,7 +225,6 @@ api blueprint采用渐进增强原则，这点比swagger好，极简写法可以
     
         [Message][]
     ```
-
 
 10. 高级简写法
 
@@ -297,7 +289,7 @@ Attributes对象定义在Request, Response关键字下面，会自动作为其Bo
 
 Headers和Body的设置，包括Request, Response，Model关键字下面直接写的，和Header，Body关键字下面写的，相对上面的关键字，必须缩进两个tab和空一行
 
-井号#不用缩进，井号下面第一层级的加号+也不用缩进，其他层级加号+通常要求缩进一个tab
+井号不用缩进，井号下面第一层级的加号也不用缩进，其他层级加号通常要求缩进一个tab
 
 
 
